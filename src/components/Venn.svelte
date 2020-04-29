@@ -8,32 +8,34 @@
   }
   circle {
     fill-opacity: 0.75;
-    stroke: black;
-  }
-  circle.enter {
-    fill: blue;
-  }
-  circle.exit {
-    fill: red;
   }
   .update {
-    fill: white;
+    fill: var(--white);
+  }
+  text {
+    font-size: 0.8em;
   }
 </style>
 
 <figure>
   <svg viewBox="-200 -120 400 240">
     <g transform="translate(-50,0)">
-      <circle class="enter" r="100" style="mix-blend-mode: multiply;"></circle>
-      <text x="-5" y="-100" text-anchor="middle">New Data</text>
-      <text x="-70" text-anchor="middle">Enter</text>
+      <circle
+        class="enter--fill"
+        r="100"
+        style="mix-blend-mode: multiply;"></circle>
+      <text x="0" y="-110" text-anchor="middle">New Data</text>
+      <text x="-80" text-anchor="start">Enter</text>
     </g>
     <g transform="translate(50,0)">
-      <circle class="exit" r="100" style="mix-blend-mode: multiply;"></circle>
-      <text x="5" y="-100" text-anchor="middle">Existing Elements</text>
-      <text x="70" text-anchor="middle">Exit</text>
+      <circle
+        class="exit--fill"
+        r="100"
+        style="mix-blend-mode: multiply;"></circle>
+      <text x="5" y="-110" text-anchor="middle">Existing Elements</text>
+      <text x="80" text-anchor="end">Exit</text>
     </g>
-    <text class="update" x="0" dy=".35em" text-anchor="middle">Update</text>
+    <text class="update" x="0" text-anchor="middle">Update</text>
   </svg>
   <figcaption>
     From Mike Bostock's Observable notebook

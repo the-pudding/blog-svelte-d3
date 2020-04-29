@@ -8,9 +8,17 @@
   }
   .toggle {
     text-align: center;
+    margin: 1rem 0;
+  }
+  button {
+    opacity: 0.5;
   }
   button.active {
-    background-color: hotpink;
+    background-color: var(--white);
+    opacity: 1;
+  }
+  section {
+    padding: 1rem;
   }
 </style>
 
@@ -45,14 +53,19 @@
   <p>Drink the Kool-Aid.</p>
 </section>
 
-<Venn />
-<Chart {data} {padding} {r} {index}>
-  <div class="toggle">
-    <button on:click="{handleClick}" class:active="{active === 'Russell'}">
-      Russell
-    </button>
-    <button on:click="{handleClick}" class:active="{active === 'Amelia'}">
-      Amelia
-    </button>
-  </div>
-</Chart>
+<section>
+  <Venn />
+</section>
+
+<section>
+  <Chart {data} {padding} {r} {index}>
+    <div class="toggle">
+      <button on:click="{handleClick}" class:active="{active === 'Russell'}">
+        Russell
+      </button>
+      <button on:click="{handleClick}" class:active="{active === 'Amelia'}">
+        Amelia
+      </button>
+    </div>
+  </Chart>
+</section>

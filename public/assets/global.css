@@ -1,9 +1,40 @@
 :root {
-  --c1: blue;
-  --c2: red;
+  --bg: #f8f5f2;
+  --fg: #232323;
+  --white: #fffffe;
+  --enter: #078080;
+  --exit: #f45d48;
+  --update: #62584c;
 }
 
-a.wordmark {
-  display: block;
-  max-width: 10rem;
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+button {
+  font-family: monospace;
+  padding: 1em;
+  background: none;
+  border: 2px solid var(--fg);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+svg text {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.enter--fill {
+  fill: var(--enter);
+}
+
+.exit--fill {
+  fill: var(--exit);
+}
+
+.update--fill {
+  fill: var(--update);
 }

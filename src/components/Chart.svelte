@@ -1,6 +1,7 @@
 <style>
   h2 {
     text-align: center;
+    font-size: 2em;
   }
   svg {
     display: block;
@@ -20,11 +21,11 @@
 
   function join(node, d) {
     const text = node.querySelector("text");
-    text.style.fill = "blue";
+    text.classList.add("enter--fill");
 
     return {
       update(d) {
-        text.style.fill = "purple";
+        text.classList.add("update--fill");
       },
 
       destroy() {}
