@@ -1,8 +1,5 @@
 <style>
   /* vars defined in public/assets/global.css */
-  h1 {
-    font-size: 4em;
-  }
   #intro {
     text-align: center;
   }
@@ -19,6 +16,8 @@
   }
   section {
     padding: 1rem;
+    max-width: 40rem;
+    margin: 0 auto;
   }
 </style>
 
@@ -49,15 +48,35 @@
 </script>
 
 <section id="intro">
-  <h1>D3 Joins and Svelte</h1>
-  <p>Drink the Kool-Aid.</p>
+  <h1>Data Visualization with D3 and Svelte</h1>
+  <p>We think it is pretty neat. Come take a sip of the Kool-Aid.</p>
 </section>
 
 <section>
+  <h2>Svelte: What is it and why do we like it?</h2>
+  <p>This should be collapsed by default?</p>
+  <p>A video of all the cool stuff in action!</p>
+
+</section>
+<section>
+  <h2>Things in this space already</h2>
+  <p>LayerCake</p>
+  <p>Pancake</p>
+  <p>d3 hearts svelte talk</p>
+  <p>etc</p>
+</section>
+
+<section id="venn">
+  <h2>Joins and the update pattern</h2>
+  <p>
+    One of the biggest differences is that Svelte pretty much handles all the
+    DOM work, while D3 is used under the hood for things like scales and shape
+    generating etc.
+  </p>
   <Venn />
 </section>
 
-<section>
+<section id="join">
   <Chart {data} {padding} {r} {index}>
     <div class="toggle">
       <button on:click="{handleClick}" class:active="{active === 'Russell'}">

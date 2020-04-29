@@ -1,8 +1,4 @@
 <style>
-  h2 {
-    text-align: center;
-    font-size: 2em;
-  }
   svg {
     display: block;
     margin: 0 auto;
