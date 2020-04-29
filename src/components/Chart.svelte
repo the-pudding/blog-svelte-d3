@@ -49,7 +49,7 @@
   }
 </script>
 
-<h2>Soup Prefence</h2>
+<h2>Soup Preference</h2>
 <slot />
 <svg {width} {height}>
   <g transform="translate({padding}, {padding})"></g>
