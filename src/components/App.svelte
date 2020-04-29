@@ -66,17 +66,19 @@
   <p>etc</p>
 </section>
 
-<section id="venn">
+<section id="join">
   <h2>Joins and the update pattern</h2>
   <p>
     One of the biggest differences is that Svelte pretty much handles all the
     DOM work, while D3 is used under the hood for things like scales and shape
     generating etc.
   </p>
-  <Venn />
-</section>
 
-<section id="join">
+  <Venn />
+
+	<p>Some default svelte transitions</p>
+	<p>transition, animate, use, oh my</p>
+	
   <Chart {data} {padding} {r} {index}>
     <div class="toggle">
       <button on:click="{handleClick}" class:active="{active === 'Russell'}">
@@ -87,4 +89,3 @@
       </button>
     </div>
   </Chart>
-</section>
