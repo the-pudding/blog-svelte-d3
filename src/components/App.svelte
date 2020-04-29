@@ -14,28 +14,23 @@
     background-color: var(--white);
     opacity: 1;
   }
-  section {
-    padding: 1rem;
-    max-width: 40rem;
-    margin: 0 auto;
-  }
 </style>
 
 <script>
+  import Intro from "./Intro.svelte";
   import Chart from "./Chart.svelte";
   import Venn from "./Venn.svelte";
-  const r = 20;
-  const padding = r * 0.5;
+  const padding = 10;
   const data = [
     [
-      { id: "Chili", value: 2 },
-      { id: "Broccoli Cheddar", value: 8 },
-      { id: "Clam Chowder", value: 7 }
+      { id: "Broccoli Cheddar", value: 8, rank: 0 },
+      { id: "Chili", value: 2, rank: 2 },
+      { id: "Clam Chowder", value: 7, rank: 1 }
     ],
     [
-      { id: "Chili", value: 9 },
-      { id: "Broccoli Cheddar", value: 6 },
-      { id: "French Onion", value: 5 }
+      { id: "Chili", value: 9, rank: 0 },
+      { id: "French Onion", value: 5, rank: 1 },
+      { id: "Broccoli Cheddar", value: 4, rank: 2 }
     ]
   ];
   let active = "Russell";
@@ -47,18 +42,29 @@
   }
 </script>
 
-<section id="intro">
-  <h1>Data Visualization with D3 and Svelte</h1>
-  <p>We think it is pretty neat. Come take a sip of the Kool-Aid.</p>
-</section>
+<Intro />
 
-<section>
+<section id="svelte">
   <h2>Svelte: What is it and why do we like it?</h2>
   <p>This should be collapsed by default?</p>
   <p>A video of all the cool stuff in action!</p>
+  <p>
+    Some of my favorite easy to explain things that should be used to convince
+    people:
+  </p>
+  <ul>
+    <li>each svelte file is a component (html, css, js)</li>
+    <li>import other components, make child</li>
+    <li>scoped elements (simple css syntax)</li>
+    <li>pass props to components (reusable)</li>
+    <li>loops and conditionals</li>
+    <li>reactive statements</li>
+    <li>data stores</li>
+  </ul>
 
 </section>
-<section>
+
+<section id="vis">
   <h2>Things in this space already</h2>
   <p>LayerCake</p>
   <p>Pancake</p>
@@ -76,10 +82,10 @@
 
   <Venn />
 
-	<p>Some default svelte transitions</p>
-	<p>transition, animate, use, oh my</p>
-	
-  <Chart {data} {padding} {r} {index}>
+  <p>Some default svelte transitions</p>
+  <p>transition, animate, use, oh my</p>
+
+  <Chart {data} {padding} {index}>
     <div class="toggle">
       <button on:click="{handleClick}" class:active="{active === 'Russell'}">
         Russell
@@ -89,3 +95,4 @@
       </button>
     </div>
   </Chart>
+</section>

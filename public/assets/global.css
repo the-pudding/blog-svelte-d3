@@ -52,3 +52,9 @@ h2 {
 p {
   margin: 1em 0;
 }
+
+section {
+  padding: 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}

@@ -5,6 +5,7 @@
     "node": "12.6.1"
   },
   "dependencies": {
+    "d3-scale": "^3.2.1",
     "tabler-icons": "^1.6.0"
   },
   "devDependencies": {
