@@ -36,6 +36,8 @@
 <script>
   import { scaleLinear } from "d3-scale";
   import { cubicOut } from "svelte/easing";
+  import { tweened } from "svelte/motion";
+  import AnimatedRect from "./AnimatedRect.svelte";
 
   export let data = [];
   export let version = 0;
@@ -61,8 +63,26 @@
   }
 
   function translate(d) {
-    return `translate(0, ${d.rank * (rectH + margin)})`;
+    return `translate(0, ${(d.rank || 0) * (rectH + margin)})`;
   }
+
+  // const initialValues = data[index].map(d => ({
+  //   rank: 0,
+  //   width: 0,
+  //   id: 2,
+  //   value: 8
+  // }));
+
+  // const barTween = tweened(initialValues, {
+  //   duration: 3000
+  // });
+
+  // $: index,
+  //   ($barTween = data[index].map(d => ({
+  //     ...d,
+  //     id: 2,
+  //     width: scaleW(d.value)
+  //   })));
 
   function parseTransform(node) {
     const t = node.getAttribute("transform");
@@ -74,81 +94,21 @@
       .map(d => +d.trim());
   }
 
-  function join(node, d) {
-    const rect = node.querySelector("rect");
-    rect.classList.add("enter--fill");
+  // function join(node, { duration = 500}) {
+  // // const rect = node.querySelector("rect");
+  // // rect.classList.add("enter--fill");
+  // console.log("enter", d.id);
 
-    return {
-      update(d) {
-        rect.classList.add("update--fill");
-      },
+  // return {
+  //   update(d) {
+  //     // rect.classList.add("update--fill");
+  //     console.log("update", d.id);
+  //   },
 
-      destroy() {}
-    };
-  }
-
-  // function enter(node, { duration = 500, delay = 500 }) {
-  //   node.querySelector("rect").style.fill = "green";
-  //   return {
-  //     duration,
-  //     delay,
-  //     easing: cubicOut,
-  //     tick: (t, u) => {
-  //       node.style.opacity = t;
-  //     }
-  //   };
-  // }
-
-  // function exit(node, { duration = 500, delay = 500 }) {
-  //   node.querySelector("rect").style.fill = "red";
-  //   return {
-  //     duration,
-  //     delay,
-  //     easing: cubicOut,
-  //     tick: (t, u) => {
-  //       node.style.opacity = t;
-  //     }
-  //   };
-  // }
-
-  // function update(node, { from, to }, { id, value, duration = 500 }) {
-  //   const rect = node.querySelector("rect");
-  //   rect.style.fill = "purple";
-  //   const w = rect.getAttribute("width") || 0;
-  //   const w2 = scaleW(value);
-  //   const delta = w2 - w;
-  //   console.log({ id, value, w, w2, delta });
-
-  //   return {
-  //     delay: 0,
-  //     duration: 500,
-  //     easing: cubicOut,
-  //     tick: (t, u) => {
-  //       rect.setAttribute("width", w + delta * t);
-  //     }
-  //   };
-  // }
-
-  // function slideX(node, { duration = 500 }) {
-  //   const [x, y] = parseTransform(node);
-  //   return {
-  //     duration,
-  //     tick: (t, u) => {
-  //       const tr = `translate(${x + u * width}, ${y})`;
-  //       node.setAttribute("transform", tr);
-  //     }
-  //   };
-  // }
-
-  // function slideY(node, { duration = 500 }) {
-  //   const [x, y] = parseTransform(node);
-  //   return {
-  //     duration,
-  //     tick: (t, u) => {
-  //       const tr = `translate(${x}, ${y + d.rank})`;
-  //       node.setAttribute("transform", tr);
-  //     }
-  //   };
+  //   destroy() {
+  //     console.log("destory", d.id);
+  //   }
+  // };
   // }
 </script>
 
@@ -169,7 +129,8 @@
   <g transform="translate({padding}, {padding * 1.5})">
     {#each data[index] as d (d.id)}
       <g transform="{translate(d)}">
-        <rect x="0" y="0" width="{scaleW(d.value)}" height="{rectH}"></rect>
+        <AnimatedRect {scaleW} w="{d.value}" h="{rectH}" />
+        <!-- <rect x="0" y="0" width="{d.width}" height="{rectH}"></rect> -->
         <text alignment-baseline="top" x="0" y="-4">{d.id} ({d.value})</text>
       </g>
     {/each}
