@@ -1,26 +1,12 @@
 <style>
   /* vars defined in public/assets/global.css */
-  #intro {
-    text-align: center;
-  }
-  .toggle {
-    text-align: center;
-    margin: 1rem 0;
-  }
-  button {
-    opacity: 0.5;
-  }
-  button.active {
-    background-color: var(--white);
-    opacity: 1;
-  }
 </style>
 
 <script>
   import Intro from "./Intro.svelte";
   import Chart from "./Chart.svelte";
   import Venn from "./Venn.svelte";
-  const padding = 10;
+  const padding = 16;
   const data = [
     [
       { id: "Broccoli Cheddar", value: 8, rank: 0 },
@@ -33,13 +19,6 @@
       { id: "Broccoli Cheddar", value: 4, rank: 2 }
     ]
   ];
-  let active = "Russell";
-  let index = 0;
-
-  function handleClick() {
-    active = this.innerText;
-    index = active === "Russell" ? 0 : 1;
-  }
 </script>
 
 <Intro />
@@ -83,16 +62,69 @@
   <Venn />
 
   <p>Some default svelte transitions</p>
-  <p>transition, animate, use, oh my</p>
+  <p>WTF to use?</p>
+  <ul>
+    <li>
+      <strong>Actions</strong>
+      are functions that are called when an element is created. They can return
+      an object with a
+      <em>destroy</em>
+      method that is called after the element is unmounted. An action can have
+      parameters. If the returned value has an
+      <em>update</em>
+      method, it will be called whenever those parameters change, immediately
+      after Svelte has applied updates to the markup.
+      <mark>Pro: good for enter/update, exit completion.</mark>
+      <mark>Con: no exit, no built in timing</mark>
+    </li>
+    <li>
+      A
+      <strong>transition</strong>
+      is triggered by an element entering or leaving the DOM as a result of a
+      state change. When a block is transitioning out, all elements inside the
+      block, including those that do not have their own transitions, are kept in
+      the DOM until every transition in the block has completed. The transition:
+      directive indicates a bidirectional transition, which means it can be
+      smoothly reversed while the transition is in progress.
+      <mark>Pro: good for enter/exit, built in timing</mark>
+      <mark>Con: no update</mark>
+    </li>
+    <li>
+      An
+      <strong>animation</strong>
+      is triggered when the contents of a keyed each block are re-ordered.
+      Animations do not run when an element is removed, only when the each
+      block's data is reordered. Animate directives must be on an element that
+      is an immediate child of a keyed each block. Animations can be used with
+      Svelte's built-in animation functions or custom animation functions.
+      <mark>
+        Pro: good update (only if array order changes though), built in timing
+      </mark>
+      <mark>Con: no enter/exit, ignores updates on data in same spot</mark>
+    </li>
+    <li>
+      <strong>Tweened</strong>
+      stores update their values over a fixed duration.
+      <em>store.set</em>
+      and
+      <em>store.update</em>
+      can accept a second options argument that will override the options passed
+      in upon instantiation. Both functions return a Promise that resolves when
+      the tween completes. If the tween is interrupted, the promise will never
+      resolve. Out of the box, Svelte will interpolate between two numbers, two
+      arrays or two objects (as long as the arrays and objects are the same
+      'shape', and their 'leaf' properties are also numbers).
+      <mark>
+        Pro: Seems like this can be an aid for the join stuff from above
+      </mark>
+    </li>
+    <li>
+      <strong>D3.</strong>
+      Use all or parts of its methods. The more D3 we use the less svelte-y it
+      is though. Perhaps relying on its transition capabilities mixed in with
+      some of the dom detection stuff mentioned above.
+    </li>
+  </ul>
 
-  <Chart {data} {padding} {index}>
-    <div class="toggle">
-      <button on:click="{handleClick}" class:active="{active === 'Russell'}">
-        Russell
-      </button>
-      <button on:click="{handleClick}" class:active="{active === 'Amelia'}">
-        Amelia
-      </button>
-    </div>
-  </Chart>
+  <Chart {data} {padding} />
 </section>

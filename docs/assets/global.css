@@ -49,6 +49,30 @@ h2 {
   margin: 0.5em 0;
 }
 
+h3 {
+  font-size: 1.5em;
+  margin: 0.5em 0;
+}
+
 p {
   margin: 1em 0;
+  line-height: 1.4;
+}
+
+li {
+  line-height: 1.4;
+}
+
+section {
+  padding: 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
 }
