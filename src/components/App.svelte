@@ -6,7 +6,7 @@
   import Intro from "./Intro.svelte";
   import Chart from "./Chart.svelte";
   import Venn from "./Venn.svelte";
-  const padding = 16;
+
   const data = [
     [
       { id: "Broccoli Cheddar", value: 8, rank: 0 },
@@ -126,5 +126,6 @@
     </li>
   </ul>
 
-  <Chart {data} {padding} />
+  <Chart {data} version="{0}" />
+  <Chart {data} version="{1}" />
 </section>

@@ -2,6 +2,7 @@
   svg {
     display: block;
     margin: 0 auto;
+    margin-bottom: 2rem;
     background-color: var(--white);
   }
   rect {
@@ -19,7 +20,10 @@
     background-color: var(--white);
     opacity: 1;
   }
-  h3 {
+  h3,
+  h4,
+  p {
+    margin: 0;
     text-align: center;
   }
   text {
@@ -33,15 +37,17 @@
   import { scaleLinear } from "d3-scale";
   import { cubicOut } from "svelte/easing";
 
-  export let padding = 0;
-  export let width = 280;
-  export let height = 160;
   export let data = [];
-  let active = "Russell";
-  let index = 0;
+  export let version = 0;
 
+  const padding = 16;
+  const width = 280;
+  const height = 160;
   const rectH = 14;
   const margin = 24;
+
+  let active = "Russell";
+  let index = 0;
 
   $: flat = [].concat(...data);
   $: max = Math.max(...flat.map(d => d.value));
@@ -146,7 +152,10 @@
   // }
 </script>
 
-<h3>Soup Preference Rating (1 - 10)</h3>
+<h4>Chart v{version}</h4>
+<h3>Fave Soups</h3>
+<p>Rating on a scale from 1 - 10</p>
+
 <div class="toggle">
   <button on:click="{handleClick}" class:active="{active === 'Russell'}">
     Russell
