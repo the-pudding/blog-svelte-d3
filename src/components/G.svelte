@@ -14,10 +14,11 @@
 
   function exit(node) {
     // y.set(height);
+    const [a, b] = parseTranslate(node);
     return {
       duration: 1000,
       tick: (t, u) => {
-        const y2 = u * height;
+        const y2 = b + u * height;
         // console.log($y, y2);
         // why is $y updating but not able to be used in the translate?
         // this doesn't work
