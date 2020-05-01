@@ -23,7 +23,7 @@
 
 <Intro />
 
-<section id="svelte">
+<!-- <section id="svelte">
   <h2>Svelte: What is it and why do we like it?</h2>
   <p>This should be collapsed by default?</p>
   <p>A video of all the cool stuff in action!</p>
@@ -49,10 +49,10 @@
   <p>Pancake</p>
   <p>d3 hearts svelte talk</p>
   <p>etc</p>
-</section>
+</section> -->
 
 <section id="join">
-  <h2>Joins and the update pattern</h2>
+  <!-- <h2>Joins and the update pattern</h2>
   <p>
     One of the biggest differences is that Svelte pretty much handles all the
     DOM work, while D3 is used under the hood for things like scales and shape
@@ -124,7 +124,7 @@
       is though. Perhaps relying on its transition capabilities mixed in with
       some of the dom detection stuff mentioned above.
     </li>
-  </ul>
+  </ul> -->
 
   <Chart {data} version="{0}" />
   <!-- <Chart {data} version="{1}" /> -->
