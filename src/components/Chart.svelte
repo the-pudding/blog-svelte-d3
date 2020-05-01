@@ -37,7 +37,8 @@
   import { scaleLinear } from "d3-scale";
   import { cubicOut } from "svelte/easing";
   import { tweened } from "svelte/motion";
-  import AnimatedRect from "./AnimatedRect.svelte";
+  import Rect from "./Rect.svelte";
+  import G from "./G.svelte";
 
   export let data = [];
   export let version = 0;
@@ -62,10 +63,6 @@
     index = active === "Russell" ? 0 : 1;
   }
 
-  function translate(d) {
-    return `translate(0, ${(d.rank || 0) * (rectH + margin)})`;
-  }
-
   // const initialValues = data[index].map(d => ({
   //   rank: 0,
   //   width: 0,
@@ -83,16 +80,6 @@
   //     id: 2,
   //     width: scaleW(d.value)
   //   })));
-
-  function parseTransform(node) {
-    const t = node.getAttribute("transform");
-    return t
-      .replace("translate", "")
-      .replace("(", "")
-      .replace(")", "")
-      .split(",")
-      .map(d => +d.trim());
-  }
 
   // function join(node, { duration = 500}) {
   // // const rect = node.querySelector("rect");
@@ -128,11 +115,10 @@
 <svg {width} {height}>
   <g transform="translate({padding}, {padding * 1.5})">
     {#each data[index] as d (d.id)}
-      <g transform="{translate(d)}">
-        <AnimatedRect {scaleW} w="{d.value}" h="{rectH}" />
-        <!-- <rect x="0" y="0" width="{d.width}" height="{rectH}"></rect> -->
+      <G {...d} {rectH} {margin} {height}>
+        <Rect w="{scaleW(d.value)}" h="{rectH}" />
         <text alignment-baseline="top" x="0" y="-4">{d.id} ({d.value})</text>
-      </g>
+      </G>
     {/each}
   </g>
 </svg>

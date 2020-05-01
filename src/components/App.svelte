@@ -9,14 +9,14 @@
 
   const data = [
     [
-      { id: "Broccoli Cheddar", value: 8, rank: 0 },
-      { id: "Chili", value: 2, rank: 2 },
-      { id: "Clam Chowder", value: 7, rank: 1 }
+      { id: "Broccoli Cheddar", value: 8, rank: 0 }
+      // { id: "Chili", value: 2, rank: 2 },
+      // { id: "Clam Chowder", value: 7, rank: 1 }
     ],
     [
-      { id: "French Onion", value: 5, rank: 1 },
-      { id: "Broccoli Cheddar", value: 3, rank: 0 },
-      { id: "Chicken Noodle", value: 4, rank: 2 }
+      { id: "French Onion", value: 5, rank: 1 }
+      // { id: "Broccoli Cheddar", value: 3, rank: 0 },
+      // { id: "Chicken Noodle", value: 4, rank: 2 }
     ]
   ];
 </script>

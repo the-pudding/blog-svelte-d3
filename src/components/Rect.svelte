@@ -8,13 +8,12 @@
   import { tweened } from "svelte/motion";
   export let w = 0;
   export let h = 0;
-  export let scaleW = x => x;
+  export let jump = false;
 
-  const width = tweened(0, {
-    duration: 1000
-  });
+  const width = tweened(0, { duration: 1000 });
+  $: width.set(w, { duration: jump ? 0 : 1000 });
 
-  $: w, ($width = scaleW(w));
+  function enter(node) {}
 </script>
 
 <rect x="0" y="0" width="{$width}" height="{h}"></rect>
