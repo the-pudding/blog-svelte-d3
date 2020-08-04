@@ -14,9 +14,9 @@
       // { id: "Clam Chowder", value: 7, rank: 1 }
     ],
     [
-      { id: "French Onion", value: 5, rank: 1 }
-      // { id: "Broccoli Cheddar", value: 3, rank: 0 },
-      // { id: "Chicken Noodle", value: 4, rank: 2 }
+      { id: "French Onion", value: 5, rank: 0 }
+      // { id: "Broccoli Cheddar", value: 3, rank: 2 },
+      // { id: "Chicken Noodle", value: 4, rank: 1 }
     ]
   ];
 </script>
@@ -126,6 +126,6 @@
     </li>
   </ul> -->
 
-  <Chart {data} version="{0}" />
+  <Chart {data} version="{1}" />
   <!-- <Chart {data} version="{1}" /> -->
 </section>

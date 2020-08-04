@@ -5,10 +5,6 @@
     margin-bottom: 2rem;
     background-color: var(--white);
   }
-  rect {
-    fill-opacity: 0.5;
-    fill: var(--update);
-  }
   .toggle {
     text-align: center;
     margin: 1rem 0;
@@ -28,8 +24,6 @@
   }
   text {
     font-size: 14px;
-    fill-opacity: 0.75;
-    fill: var(--update);
   }
 </style>
 

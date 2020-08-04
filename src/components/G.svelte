@@ -1,29 +1,34 @@
 <script>
-  import { onDestroy } from "svelte";
+  import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
   import { tweened } from "svelte/motion";
   import { fade } from "svelte/transition";
   import parseTranslate from "./parse-translate";
 
+  export let id;
+  export let value;
   export let rank;
   export let rectH;
   export let margin;
   export let height;
+  export let duration = 2000;
 
-  const y = tweened(height, { duration: 1000 });
+  const y = tweened(height, { duration });
   $: y.set(rank * (rectH + margin));
 
+  onMount(() => {
+    console.log("onMount", id, value);
+  });
+  onDestroy(() => {
+    console.log("onDestroy", id, value);
+  });
+
+  // Hack until tweened works on exit
   function exit(node) {
-    // y.set(height);
     const [a, b] = parseTranslate(node);
     return {
-      duration: 1000,
+      duration,
       tick: (t, u) => {
         const y2 = b + u * height;
-        // console.log($y, y2);
-        // why is $y updating but not able to be used in the translate?
-        // this doesn't work
-        // const translate = `translate(0, ${$y})`;
-        // this works
         const translate = `translate(0, ${y2})`;
         node.setAttribute("transform", translate);
       }
@@ -31,7 +36,6 @@
   }
 </script>
 
-<!-- exit stuff has to be done in the tick function, any variables used in the html here are dead to us in the exit function -->
 <g out:exit transform="translate(0, {$y})">
   <slot />
 </g>
