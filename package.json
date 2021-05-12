@@ -20,7 +20,7 @@
     "html-minifier": "^4.0.0",
     "layercake": "^2.0.1",
     "node-sass": "^4.13.1",
-    "postcss": "^7.0.27",
+    "postcss": "^8.2.10",
     "prettier": "^1.19.1",
     "prettier-plugin-svelte": "^0.7.0",
     "rimraf": "^3.0.2",
