@@ -5,7 +5,7 @@
     "node": "12.6.1"
   },
   "dependencies": {
-    "d3-scale": "^3.2.1",
+    "d3-scale": "^4.0.2",
     "tabler-icons": "^1.6.0"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "compression": "^1.7.4",
     "cross-env": "^6.0.3",
     "html-minifier": "^4.0.0",
-    "layercake": "^2.0.1",
+    "layercake": "^7.0.0",
     "node-sass": "^4.13.1",
     "postcss": "^7.0.27",
     "prettier": "^1.19.1",
